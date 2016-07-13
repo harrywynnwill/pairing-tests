@@ -1,14 +1,17 @@
 class Gambler
   attr_reader :account
 
-  def initialize
-    @account = 0
+    DEFAULT_CREDIT = 20
+
+  def initialize ammount = DEFAULT_CREDIT
+    @account = ammount
   end
-  def deposit ammount
-    @account += ammount
-  end
-  def play_game cost
-    @account -= cost
+  
+  def debit ammount
+    @account -= ammount
   end
 
+  def credit ammount
+    @account += ammount
+  end
 end
