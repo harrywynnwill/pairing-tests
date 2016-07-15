@@ -3,11 +3,11 @@ require 'rules'
 
 describe FruitMachine do
   subject(:fruitmachine) { FruitMachine.new bank {include Rules}}
-  let(:bank) {double :bank}
+  let(:bank) { instance_spy ( "bank" )}
   describe '#all_the_same_colour' do
     it 'returns true if all the slots are the same' do
       allow(fruitmachine.wheel).to receive(:sample).and_return(:blue)
-      fruitmachine.spin_the_wheel
+      fruitmachine.spin_the_wheels
       expect(fruitmachine.all_the_same_colour fruitmachine.player_turn).to be true
     end
   end
@@ -22,7 +22,6 @@ describe FruitMachine do
       allow(fruitmachine.wheel).to receive(:sample).and_return(:yellow)
       fruitmachine.wheel_one_spin
       expect(fruitmachine.all_different_colours fruitmachine.player_turn).to be true
-
     end
   end
   describe "#two_or_more_adjacent" do
@@ -38,4 +37,25 @@ describe FruitMachine do
       expect(fruitmachine.two_or_more_adjacent_colours fruitmachine.player_turn).to be true
     end
   end
+  describe "#insert_coin" do
+    it "inserts a coin into the fruit machine" do
+      fruitmachine.insert_coin
+      expect(bank).to have_recieved(:play_game)
+    end
+  end
+  describe "#spin_the_wheels" do
+    it "spins the wheels on the fruity" do
+      allow(fruitmachine.wheel).to receive(:sample).and_return(:blue)
+      fruitmachine.spin_the_wheels
+      expect(fruitmachine.player_turn).to eq [:blue, :blue, :blue, :blue]
+    end
+  end
+  describe "#wheel_one_spin" do
+    it "spins one wheel on the fruit machine" do
+      allow(fruitmachine.wheel).to receive(:sample).and_return(:blue)
+      fruitmachine.wheel_one_spin
+      expect(fruitmachine.player_turn).to eq [:blue]
+    end
+  end
+  
 end

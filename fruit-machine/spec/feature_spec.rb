@@ -7,7 +7,7 @@ describe "scenarios on the fruit machine" do
   it "player recieves the jackpot get 4 colours in a row" do
     fruity.insert_coin
     allow(fruity.wheel).to receive(:sample).and_return(:blue)
-    fruity.spin_the_wheel
+    fruity.spin_the_wheels
     fruity.result_of_spin
     expect(fruity.bank.jackpot).to eq 0
     expect(fruity.show_balance).to eq 70

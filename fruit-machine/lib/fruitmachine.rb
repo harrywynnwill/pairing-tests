@@ -9,15 +9,13 @@ class FruitMachine
   WHEEL = [:red, :green, :blue, :yellow]
   SLOTS = 4
 
-
   def initialize bank = Bank.new
     @bank = bank
     @player_turn = []
     @wheel = WHEEL
   end
 
-
-  def spin_the_wheel
+  def spin_the_wheels
     SLOTS.times { wheel_one_spin }
     player_turn
   end
@@ -34,10 +32,10 @@ class FruitMachine
     @bank.gambler.account
   end
 
- def result_of_spin
-  return @bank.hit_the_jackpot if all_the_same_colour @player_turn
-  return @bank.payout_five_times if two_or_more_adjacent_colours @player_turn
-  return @bank.payout_half if all_different_colours @player_turn
- end
+  def result_of_spin
+    return @bank.hit_the_jackpot if all_the_same_colour @player_turn
+    return @bank.payout_five_times if two_or_more_adjacent_colours @player_turn
+    return @bank.payout_half if all_different_colours @player_turn
+  end
 
 end

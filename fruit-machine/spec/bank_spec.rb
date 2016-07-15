@@ -1,7 +1,7 @@
 require 'bank'
 describe Bank do
   subject(:bank) { Bank.new gambler }
-  let(:gambler) { Gambler.new }
+  let(:gambler) { instance_spy ( "gambler" ) }
   let(:float) { 50 }
   let(:half_jackpot) {-bank.jackpot/2}
   let(:coin) {1}
@@ -32,14 +32,5 @@ describe Bank do
       expect(bank.jackpot).to eq 0
     end
   end
-  describe "#credit_player" do
-    it "credits the player if there is not enough funds" do
-      bank.remove_from_jackpot 47
-      p bank.jackpot
-      bank.payout_five_times
-      p gambler.account
-    end
-  end
-
 
 end

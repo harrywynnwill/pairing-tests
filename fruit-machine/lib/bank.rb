@@ -21,7 +21,7 @@ class Bank
 
   def payout_five_times coin = COIN
     5.times do
-      if @jackpot - COIN < 0
+      if jackpot_empty?
          @gambler.credit coin
       else
         @gambler.credit coin
@@ -29,7 +29,6 @@ class Bank
       end
     end
   end
-
 
   def payout_half
     @gambler.credit (HALVE * @jackpot).round
@@ -42,15 +41,17 @@ class Bank
     remove_from_jackpot @jackpot
   end
 
-  def jackpot_empty?
-    @jackpot == 0
-  end
-
   def add_to_jackpot coin
      @jackpot += coin
   end
 
   def remove_from_jackpot coin
     @jackpot -= coin
+  end
+
+  private
+
+  def jackpot_empty?
+    @jackpot == 0
   end
 end
