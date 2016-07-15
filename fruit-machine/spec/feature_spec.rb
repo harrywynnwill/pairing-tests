@@ -2,7 +2,7 @@ require 'fruitmachine'
 require 'gambler'
 require 'bank'
 
-describe "scenarios on the fruit machine" do
+describe "FEATURE TESTS" do
   let(:fruity) {FruitMachine.new}
   it "player recieves the jackpot get 4 colours in a row" do
     fruity.insert_coin

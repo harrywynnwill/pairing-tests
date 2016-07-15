@@ -57,5 +57,12 @@ describe FruitMachine do
       expect(fruitmachine.player_turn).to eq [:blue]
     end
   end
-  
+  describe "#result_of_spin" do
+    it "determines the result of a spin on the fruitmachine" do
+      p fruitmachine.result_of_spin
+        expect(bank).to have_recieved(:hit_the_jackpot)
+        expect(bank).to have_recieved(:payout_five_times)
+        expect(bank).to have_recieved(:payout_half)
+    end
+  end
 end
