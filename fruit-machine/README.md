@@ -1,3 +1,7 @@
+[![Coverage Status](https://coveralls.io/repos/github/harrywynnwill/pairing-tests/badge.svg?branch=master)](https://coveralls.io/github/harrywynnwill/pairing-tests?branch=master)
+
+
+
 # Fruit machine
 
 We are going to create a virtual fruit machine. To make things easier instead of symbols we are going to use colours: black, white, green, yellow.
